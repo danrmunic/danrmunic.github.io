@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx8sc3t774myt"]
+
+[ext_resource type="Script" path="res://Dialogue.gd" id="1_qkk88"]
+[ext_resource type="Texture2D" uid="uid://c7df4ccm4xdfu" path="res://Sprites/Orbis Maple TV/stand_0.png" id="2_qe45b"]
+[ext_resource type="Texture2D" uid="uid://e5qfoy4nh80i" path="res://Sprites/Orbis Maple TV/stand_1.png" id="3_qqrqf"]
+[ext_resource type="Texture2D" uid="uid://dkx8oh4stbnwp" path="res://Sprites/Orbis Maple TV/stand_2.png" id="4_1wksi"]
+[ext_resource type="Texture2D" uid="uid://c0y1eemikxtcm" path="res://Sprites/Orbis Maple TV/stand_3.png" id="5_5sqdn"]
+[ext_resource type="Texture2D" uid="uid://dbvpyoeyv8yvh" path="res://Sprites/Orbis Maple TV/stand_4.png" id="6_5bjpo"]
+[ext_resource type="Texture2D" uid="uid://dvjw6nts5x7b2" path="res://Sprites/Orbis Maple TV/stand_5.png" id="7_lwq3p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_np5fw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qe45b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qqrqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1wksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5sqdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5bjpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lwq3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qkk88")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -257)
+scale = Vector2(0.879545, 0.766629)
+sprite_frames = SubResource("SpriteFrames_np5fw")
+autoplay = "default"
+frame_progress = 0.176208
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -190.0
+offset_right = 206.0
+offset_bottom = -51.0
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -294.0
+offset_right = 188.0
+offset_bottom = -222.0
+
+[connection signal="dialogue_finished" from="." to="." method="_on_dialogue_finished"]

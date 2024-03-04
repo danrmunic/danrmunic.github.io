@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciqpv1d51ki7v"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nfgaw"]
+[ext_resource type="Texture2D" uid="uid://d1dk0gmbxru63" path="res://Sprites/Character/prone_0.png" id="2_h70m5"]
+[ext_resource type="Texture2D" uid="uid://deo5bwjtbcp58" path="res://Sprites/Character/jump_0.png" id="3_tr402"]
+[ext_resource type="Texture2D" uid="uid://cvs12nun3412y" path="res://Sprites/Character/stand1_0.png" id="4_mdom2"]
+[ext_resource type="Texture2D" uid="uid://toibxak7u55m" path="res://Sprites/Character/stand1_1.png" id="5_rwyhx"]
+[ext_resource type="Texture2D" uid="uid://bstmegc1ioje4" path="res://Sprites/Character/walk1_0.png" id="6_gat0m"]
+[ext_resource type="Texture2D" uid="uid://if7aham18sku" path="res://Sprites/Character/walk1_1.png" id="7_twgd7"]
+[ext_resource type="Texture2D" uid="uid://c5dh3a4g8nhjh" path="res://Sprites/Character/walk1_2.png" id="8_d5spl"]
+[ext_resource type="Texture2D" uid="uid://bdcmj1gtp4fx4" path="res://Sprites/Character/walk1_3.png" id="9_ib5yv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yr0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h70m5")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tr402")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mdom2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rwyhx")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 1.3
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gat0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_twgd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d5spl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ib5yv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnccn"]
+size = Vector2(16, 77)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_nfgaw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6yr0l")
+animation = &"duck"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -2)
+shape = SubResource("RectangleShape2D_vnccn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -150)
+process_callback = 0
+limit_left = -1000
+limit_top = -900
+limit_right = 950
+limit_bottom = 970
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 13)
+texture = ExtResource("2_h70m5")
